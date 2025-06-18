@@ -30,6 +30,7 @@ This is a RESTful API backend for the **SmartHome Management System**, built wit
 | **MySQL / PostgreSQL**| Relational database backend                 |
 | **Laravel Scheduler**| Background task automation (e.g. device schedules) |
 | **Vue.js** (frontend)| Separate SPA consuming the API              |
+| **Stancl\Tenancy** (backend)| Multi Tenancy                        |
 
 
 

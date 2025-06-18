@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('device_id');
+            $table->string('action'); // 'on' or 'off'
+            $table->time('scheduled_time'); // Waktu eksekusi dalam satu hari
+            $table->json('days')->nullable(); // ['mon', 'tue', 'wed'], null = setiap hari
+            $table->boolean('enabled')->default(true);
+            $table->timestamp('last_executed_at')->nullable();
+
             $table->timestamps();
+
+            // Foreign key
+            $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade');
         });
     }
 

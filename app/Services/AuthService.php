@@ -40,6 +40,7 @@ class AuthService
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => bcrypt($data['password']),
+            'role' => $data['role'] ?? 'admin', // default to 'admin' if not provided
         ]);
 
         $token = JWTAuth::fromUser($user);

@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -29,5 +28,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->app->getNamespace() . 'Http\Controllers')
             ->group(base_path('routes/web.php'));
+
+        $this->loadRoutesFrom(base_path('routes/tenant.php'));
     }
 }
