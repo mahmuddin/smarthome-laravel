@@ -1,167 +1,61 @@
-# SmartHome Management System – REST API
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-This is a RESTful API backend for the **SmartHome Management System**, built with Laravel 12 and PHP 8.2+. It enables users to manage homes, rooms, smart devices (e.g. lights, AC, CCTV), monitor sensor data, schedule device actions, and receive real-time notifications.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
+## About Laravel
 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## 📦 Features
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- User authentication & role management (JWT-based)
-- Multi-home and multi-room support
-- Device control (ON/OFF simulation)
-- Real-time sensor monitoring (via REST API or WebSocket)
-- Device action scheduling
-- Notifications (email or WebSocket-based)
-- Admin-level user management system
-- API-first design for integration with a separate Vue.js frontend
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Learning Laravel
 
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-## 🛠️ Technology Stack
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-| Component             | Description                                  |
-|----------------------|----------------------------------------------|
-| **PHP**              | >= 8.2                                       |
-| **Laravel**          | v12                                          |
-| **Laravel Sanctum**  | Used optionally for token-based auth         |
-| **JWT Auth**         | [`tymon/jwt-auth`](https://github.com/tymondesigns/jwt-auth) for secure API authentication |
-| **Laravel WebSockets** | Real-time monitoring and event updates    |
-| **Spatie Permission**| Role & permission management                 |
-| **MySQL / PostgreSQL**| Relational database backend                 |
-| **Laravel Scheduler**| Background task automation (e.g. device schedules) |
-| **Vue.js** (frontend)| Separate SPA consuming the API              |
-| **Stancl\Tenancy** (backend)| Multi Tenancy                        |
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+## Laravel Sponsors
 
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-## ⚙️ Requirements
+### Premium Partners
 
-- PHP >= 8.2
-- Composer >= 2.5
-- Laravel >= 12.x
-- MySQL or PostgreSQL
-- Node.js (for Laravel Echo / WebSockets)
-- Redis (for queue/websocket, optional)
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
+## Contributing
 
-## 🗄️ API Modules
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### 🔐 Authentication
-- `POST /api/login`
-- `POST /api/register`
-- `POST /api/logout`
-- `GET /api/user` (current user info)
+## Code of Conduct
 
-### 👥 User Management (Admin only)
-- `GET /api/users`
-- `POST /api/users`
-- `PUT /api/users/{id}`
-- `DELETE /api/users/{id}`
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-### 🏠 Home & Room Management
-- `GET /api/houses`
-- `POST /api/houses`
-- `GET /api/houses/{id}/rooms`
+## Security Vulnerabilities
 
-### 🔌 Device Control
-- `GET /api/devices/{id}/status`
-- `POST /api/devices/{id}/toggle`
-- `GET /api/devices/{id}`
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-### 🌡️ Sensor Monitoring
-- `GET /api/sensors/{device_id}` (latest reading)
-- `GET /api/sensors/{device_id}/history`
+## License
 
-### 📅 Scheduling
-- `GET /api/schedules`
-- `POST /api/schedules`
-- `DELETE /api/schedules/{id}`
-
-### 🔔 Notifications
-- `GET /api/notifications`
-- Real-time pushed via Laravel WebSockets
-
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/smarthome-api.git
-cd smarthome-api
-```
-
-### 2. Install dependencies
-```bash
-composer install
-php artisan key:generate
-```
-
-### 3. Setup your .env
-```bash
-APP_NAME=SmartHome
-APP_URL=http://localhost:8000
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=smarthome
-DB_USERNAME=root
-DB_PASSWORD=
-
-JWT_SECRET= # Run `php artisan jwt:secret`
-```
-
-### 4. Run Migrations
-```bash
-php artisan migrate --seed
-```
-
-### 5. Run Development Server
-```bash
-php artisan migrate --seed
-```
-
-### 6. Start Laravel Scheduler (for cron jobs)
-```bash
-php artisan schedule:work
-```
-
-### 6. WebSocket Server
-```bash
-php artisan websockets:serve
-```
-
-## 📁 Project Structure
-```plaintext
-app/
-├── Http/
-│   ├── Controllers/
-│   └── Middleware/
-├── Models/
-├── Events/
-├── Jobs/
-routes/
-├── api.php
-database/
-├── migrations/
-├── seeders/
-```
-
-## 🧪 Testing API
-Use tools like:
-- Postman
-- Insomnia
-- Or integrate directly with your Vue.js frontend
-
-
-## 📜 License
-This project is open-source and licensed under the **Apache License 2.0**.
-Read more: [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
-
-## 🤝 Contributions
-Feel free to fork, improve, or report issues via Pull Requests or Issues.
-
-## 📧 Contact
-Made with ❤️ by [Mahmuddin]
-Email: mahmuddinnf@gmail.com
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

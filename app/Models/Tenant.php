@@ -1,50 +1,42 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Str;
-use Stancl\Tenancy\Database\Concerns\HasDataColumn;
-use Stancl\Tenancy\Database\Concerns\HasDomains;
-use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
+use Spatie\Multitenancy\Models\Tenant as BaseTenant;
 
 class Tenant extends BaseTenant
 {
-    use HasDomains, HasDataColumn;
+    // Gunakan koneksi landlord karena tenants disimpan di DB pusat
+    protected $connection = 'landlord';
 
-    public $incrementing  = false;
-    protected $keyType    = 'string';
-    protected $primaryKey = 'id';
+    protected $fillable = [
+        'id',
+        'name',
+        'slug',
+        'database',
+        'email',
+        'data',
+    ];
 
     protected $casts = [
         'data' => 'array',
     ];
 
-    // Jika ingin menambahkan atribut atau relasi khusus tenant
-
-    // Contoh: menambahkan atribut custom
-    protected $fillable = [
-        'id',   // biasanya berupa id
-        'data', // kolom JSON yang berisi info tenant seperti nama, alamat, dll,
-    ];
-
-    protected static function booted()
+    public function getDatabaseName(): string
     {
-        static::creating(function ($tenant) {
-            if (empty($tenant->id)) {
-                $tenant->id = (string) Str::uuid();
-            }
-        });
+        return $this->database;
     }
 
-    // Contoh accessor untuk nama tenant
-    protected function name(): Attribute
+    public function domains()
     {
-        return Attribute::get(fn() => $this->data['name'] ?? null);
+        return $this->hasMany(Domain::class);
     }
-
-    // ⬇️ Tambahkan ini agar Laravel tahu kolom `data` menyimpan dynamic attributes
-    public static function getCustomColumns(): array
+    public function makeCurrent(): static
     {
-        return ['id', 'data'];
+        // Jalankan task custom
+        app(\App\Multitenancy\Tasks\SwitchTenantDatabaseTask\TenantDatabaseManager::class)
+            ->makeCurrent($this);
+
+        // Jalankan bawaan Spatie
+        return parent::makeCurrent();
     }
 }
