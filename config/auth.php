@@ -77,7 +77,7 @@ return [
 
         'tenant_users' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\TenantUser::class, // model user tenant
+            'model'  => App\Models\Tenant\TenantUser::class, // model user tenant
         ],
 
         // 'users' => [
