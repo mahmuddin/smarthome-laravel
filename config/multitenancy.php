@@ -19,7 +19,7 @@ return [
      * This class should extend `Spatie\Multitenancy\TenantFinder\TenantFinder`
      *
      */
-    'tenant_finder'                      => App\Multitenancy\TenantFinder\PathBasedTenantFinder::class,
+    'tenant_finder'                      => App\MultiTenancy\TenantFinder\PathBasedTenantFinder::class,
     'tenant_connection'                  => 'tenant',
     /*
      * These fields are used by tenant:artisan command to match one or more tenant.

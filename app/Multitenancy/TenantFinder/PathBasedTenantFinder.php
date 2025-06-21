@@ -15,8 +15,7 @@ class PathBasedTenantFinder extends TenantFinder
         }
 
                                       // Contoh: ambil slug dari path pertama
-        $slug = $request->segment(1); // /{slug}/endpoint
-
+        $slug = $request->segment(2); // /api/{slug}/endpoint
         return Tenant::where('slug', $slug)->first();
     }
 }
