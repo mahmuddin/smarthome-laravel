@@ -30,9 +30,8 @@ Route::prefix('superadmin')->name('api.')->group(function () {
     });
 });
 
-// ✅ Middleware 'tenant' agar route berikut hanya jalan jika tenant dikenali
-Route::prefix('{tenant}')->middleware('tenant')->group(function () {
-
+// Route tenant-aware (TANPA prefix {tenant})
+Route::middleware('tenant')->group(function () {
     // ✅ Login Tenant
     Route::post('/login', [TenantAuthController::class, 'login'])->name('tenant.login');
 
