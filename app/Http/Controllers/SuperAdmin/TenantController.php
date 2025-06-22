@@ -68,7 +68,8 @@ class TenantController extends Controller
         TenantUser::create([
             'name'     => $validated['name'],
             'email'    => $validated['email'],
-            'password' => Hash::make('secret'), // ganti dengan password yang lebih aman!
+            'role'     => $validated['role'] ?? 'admin', // default role admin
+            'password' => Hash::make('secret'),          // ganti dengan password yang lebih aman!
         ]);
 
         return response()->json([

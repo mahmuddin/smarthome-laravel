@@ -18,6 +18,7 @@ class TenantUser extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
