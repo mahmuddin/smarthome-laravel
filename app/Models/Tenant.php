@@ -28,7 +28,7 @@ class Tenant extends BaseTenant
 
     public function domains()
     {
-        return $this->hasMany(\Spatie\Multitenancy\Models\Domain::class);
+        return $this->hasMany(Domain::class);
     }
     public function makeCurrent(): static
     {
