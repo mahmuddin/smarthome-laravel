@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('condition'); // e.g., >, <, ==
             $table->string('value');     // bisa suhu, kelembaban, dll
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 

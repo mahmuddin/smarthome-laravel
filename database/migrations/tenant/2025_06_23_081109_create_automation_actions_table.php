@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('action');            // turn_on, turn_off, set_value
             $table->string('value')->nullable(); // jika diperlukan
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->time('schedule_time');
             $table->string('repeat')->default('once'); // once, daily, weekly
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 

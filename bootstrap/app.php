@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Daftarkan route middleware di sini
         $middleware->alias([
             'tenant' => \Spatie\Multitenancy\Http\Middleware\NeedsTenant::class,
+            'role'   => \App\Http\Middleware\RoleCheck::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

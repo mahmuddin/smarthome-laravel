@@ -1,10 +1,12 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Multitenancy\Models\Tenant as BaseTenant;
 
 class Tenant extends BaseTenant
 {
+    use SoftDeletes;
     // Gunakan koneksi landlord karena tenants disimpan di DB pusat
     protected $connection = 'landlord';
 

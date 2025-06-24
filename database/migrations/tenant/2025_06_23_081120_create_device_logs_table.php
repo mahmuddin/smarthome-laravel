@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('device_id')->constrained()->onDelete('cascade');
             $table->string('value');
             $table->timestamp('recorded_at')->useCurrent();
+
         });
     }
 

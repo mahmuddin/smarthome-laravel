@@ -11,8 +11,9 @@ class TenantDatabaseManager extends SwitchTenantDatabaseTask
 {
     public function makeCurrent(IsTenant $tenant): void
     {
-        /** @var Tenant $tenant */
-        $tenant = $tenant;
+        if (! $tenant instanceof Tenant) {
+            throw new \InvalidArgumentException('The tenant must be an instance of App\Models\Tenant');
+        }
 
         Config::set('database.connections.tenant', [
             'driver'   => 'pgsql',

@@ -28,6 +28,7 @@ return new class extends Migration
             $table->json('data')->nullable();    // Data tambahan fleksibel
 
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 

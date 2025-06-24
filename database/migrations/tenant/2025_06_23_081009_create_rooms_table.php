@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('home_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 

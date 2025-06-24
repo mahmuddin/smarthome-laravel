@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('role', ['admin', 'superadmin'])->default('admin'); // Role: enum admin/superadmin
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

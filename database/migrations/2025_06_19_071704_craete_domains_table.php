@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('domain')->unique();
 
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 

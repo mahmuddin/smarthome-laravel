@@ -41,4 +41,8 @@ class TenantUser extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function homes()
+    {
+        return $this->hasMany(Home::class);
+    }
 }

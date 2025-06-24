@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('is_online')->default(false);
             $table->timestamp('last_active_at')->nullable();
             $table->timestamps();
+            $table->softDeletes(); // Tambahkan baris ini untuk soft delete
         });
     }
 
