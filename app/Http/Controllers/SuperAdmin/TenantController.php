@@ -12,6 +12,16 @@ use Illuminate\Support\Str;
 
 class TenantController extends Controller
 {
+    public function index()
+    {
+        // Ambil semua tenant yang ada
+        $tenants = Tenant::with('domains')->get();
+
+        return response()->json([
+            'message' => '✅ List of tenants',
+            'tenants' => $tenants,
+        ]);
+    }
     // Buat tenant baru
     public function store(Request $request)
     {
